@@ -50,14 +50,19 @@
   <div class="container">
     <h2>Round Robin Calculator</h2>
     <form id="roundRobinForm">
-      <label for="players">Number of players:</label><br>
-      <input type="number" id="players" name="players" value="12" min="2" required><br>
-      
-      <label for="boards">Number of boards:</label><br>
-      <input type="number" id="boards" name="boards" value="3" min="1" required><br>
+      <div style="display: flex; justify-content: center; gap: 20px;">
+        <div>
+          <label for="players"># Players:</label><br>
+          <input type="number" id="players" name="players" value="12" min="2" required style="width: 50px;">
+        </div>
+        <div>
+          <label for="boards"># Boards:</label><br>
+          <input type="number" id="boards" name="boards" value="3" min="1" required style="width: 40px;">
+        </div>
+      </div>
       
       <label for="gameLength">Game length (minutes, default: 10):</label><br>
-      <input type="number" id="gameLength" name="gameLength" value="10" min="1" required><br>
+      <input type="number" id="gameLength" name="gameLength" value="10" min="1" required style="width: 50px;"><br>
       
       <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
         <label for="startTime">Start time:</label>
