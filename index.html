@@ -62,6 +62,23 @@
       <label for="startTime">Start time (default: 18:00):</label><br>
       <input type="time" id="startTime" name="startTime" value="18:00" required><br>
       
+      <div style="display: flex; justify-content: center; gap: 20px;">
+        <div>
+          <label>Game Type:</label><br>
+          <input type="radio" id="game301" name="gameType" value="301" checked>
+          <label for="game301">301</label><br>
+          <input type="radio" id="game501" name="gameType" value="501">
+          <label for="game501">501</label>
+        </div>
+        <div>
+          <label>Match Format:</label><br>
+          <input type="radio" id="bestOf1" name="matchFormat" value="1" checked>
+          <label for="bestOf1">Best of 1</label><br>
+          <input type="radio" id="bestOf3" name="matchFormat" value="3">
+          <label for="bestOf3">Best of 3</label>
+        </div>
+      </div>
+      
       <button type="button" id="calculateBtn">Calculate</button>
     </form>
     <div class="result" id="result"></div>

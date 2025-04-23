@@ -1,33 +1,30 @@
 // script.js
-document.getElementById("calculateBtn").addEventListener("click", function () {
-  const players = parseInt(document.getElementById("players").value);
-  const boards = parseInt(document.getElementById("boards").value);
-  const gameLength = parseInt(document.getElementById("gameLength").value);
-  const startTime = document.getElementById("startTime").value;
+document.getElementById('calculateBtn').addEventListener('click', () => {
+  const players = parseInt(document.getElementById('players').value);
+  const boards = parseInt(document.getElementById('boards').value);
+  const baseGameLength = parseInt(document.getElementById('gameLength').value);
+  const startTime = document.getElementById('startTime').value;
+  const gameType = document.querySelector('input[name="gameType"]:checked').value;
+  const matchFormat = document.querySelector('input[name="matchFormat"]:checked').value;
 
-  // Calculate total matches (round-robin formula)
-  const totalMatches = (players * (players - 1)) / 2;
+  // Calculate game length based on game type
+  const gameLength = gameType === '501' ? baseGameLength * (501 / 301) : baseGameLength;
 
-  // Calculate total time required (in minutes)
-  const totalGameTime = Math.ceil(totalMatches / boards) * gameLength;
+  // Adjust for match format
+  const totalGameLength = matchFormat === '3' ? gameLength * 2.5 : gameLength;
 
-  // Convert total time to hours and minutes
-  const hours = Math.floor(totalGameTime / 60);
-  const minutes = totalGameTime % 60;
+  // Calculate total time needed
+  const totalTime = (players / boards) * totalGameLength;
 
-  // Display results
-  const resultDiv = document.getElementById("result");
-  resultDiv.innerHTML = `
-    <p>Total matches to play: <strong>${totalMatches}</strong></p>
-    <p>Total time required: <strong>${hours} hour(s) and ${minutes} minute(s)</strong></p>
-    <p>Starting at ${startTime}, you would finish around <strong>${calculateEndTime(startTime, totalGameTime)}</strong>.</p>
-  `;
-});
-
-function calculateEndTime(startTime, totalGameTime) {
-  const [startHour, startMinute] = startTime.split(":").map(Number);
-  const endMinutes = startHour * 60 + startMinute + totalGameTime;
+  // Calculate end time
+  const [startHour, startMinute] = startTime.split(':').map(Number);
+  const endMinutes = startHour * 60 + startMinute + totalTime;
   const endHour = Math.floor(endMinutes / 60) % 24;
-  const endMinute = endMinutes % 60;
-  return `${endHour.toString().padStart(2, "0")}:${endMinute.toString().padStart(2, "0")}`;
-}
+  const endMinute = Math.floor(endMinutes % 60);
+
+  // Format end time
+  const formattedEndTime = `${String(endHour).padStart(2, '0')}:${String(endMinute).padStart(2, '0')}`;
+
+  // Display result
+  document.getElementById('result').textContent = `Total time needed: ${Math.ceil(totalTime)} minutes. End time: ${formattedEndTime}.`;
+});
