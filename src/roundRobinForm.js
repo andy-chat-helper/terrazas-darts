@@ -1,4 +1,4 @@
-// script.js
+// roundRobinForm.js
 document.getElementById('calculateBtn').addEventListener('click', () => {
   const players = parseInt(document.getElementById('players').value);
   const boards = parseInt(document.getElementById('boards').value);

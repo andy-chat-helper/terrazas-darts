@@ -3,45 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/style.css">
   <title>Terrazas Darts Scheduling</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      background-color: #f8f9fa;
-      color: #333;
-    }
-    header {
-      background-color: #004d00;
-      color: white;
-      padding: 20px;
-      font-size: 24px;
-    }
-    .container {
-      padding: 20px;
-    }
-    input, button {
-      font-size: 16px;
-      margin: 10px;
-      padding: 10px;
-    }
-    button {
-      background-color: #cc0000;
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    button:hover {
-      background-color: #990000;
-    }
-    .result {
-      margin-top: 20px;
-      font-size: 18px;
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -50,7 +13,7 @@
   <div class="container">
     <h2>Round Robin Calculator</h2>
     <form id="roundRobinForm">
-      <div style="display: flex; justify-content: center; gap: 20px;">
+      <div id="selectionPlayerBoard">
         <div>
           <label for="players"># Players:</label><br>
           <input type="number" id="players" name="players" value="12" min="2" required style="width: 50px;">
@@ -60,16 +23,17 @@
           <input type="number" id="boards" name="boards" value="3" min="1" required style="width: 40px;">
         </div>
       </div>
+      <div id="selectionLength">
+        <label for="gameLength">Game length for mode 301 (unit: minutes, default: 10):</label><br>
+        <input type="number" id="gameLength" name="gameLength" value="10" min="1" required style="width: 50px;"><br>
+      </div>
       
-      <label for="gameLength">Game length (minutes, default: 10):</label><br>
-      <input type="number" id="gameLength" name="gameLength" value="10" min="1" required style="width: 50px;"><br>
-      
-      <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+      <div id="selectionStartTime">
         <label for="startTime">Start time:</label>
         <input type="time" id="startTime" name="startTime" value="18:00" required>
       </div>
       
-      <div style="display: flex; justify-content: center; gap: 20px;">
+      <div id="selectionGameDetails">
         <div>
           <label>Game Type:</label><br>
           <input type="radio" id="game301" name="gameType" value="301" checked>
@@ -90,6 +54,7 @@
     </form>
     <div class="result" id="result"></div>
   </div>
-  <script src="script.js"></script>
+  <script src="./src/roundRobinForm.js"></script>
+  <script src="./src/gameLength.js"></script>
 </body>
 </html>
