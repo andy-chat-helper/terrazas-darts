@@ -24,6 +24,14 @@ input, button {
     padding: 10px;
 }
 
+.wide-input {
+    width: 50px;
+}
+
+.narrow-input {
+    width: 40px;
+}
+
 button {
     background-color: #cc0000;
     color: white;

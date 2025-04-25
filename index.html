@@ -16,16 +16,16 @@
       <div id="selectionPlayerBoard">
         <div>
           <label for="players"># Players:</label><br>
-          <input type="number" id="players" name="players" value="12" min="2" required style="width: 50px;">
+          <input class="wide-input" type="number" id="players" name="players" value="12" min="2" required>
         </div>
         <div>
           <label for="boards"># Boards:</label><br>
-          <input type="number" id="boards" name="boards" value="3" min="1" required style="width: 40px;">
+          <input class="narrow-input" type="number" id="boards" name="boards" value="3" min="1" required>
         </div>
       </div>
       <div id="selectionLength">
         <label for="gameLength">Game length for mode 301 (unit: minutes, default: 10):</label><br>
-        <input type="number" id="gameLength" name="gameLength" value="10" min="1" required style="width: 50px;"><br>
+        <input class="wide-input" type="number" id="gameLength" name="gameLength" value="10" min="1" required><br>
       </div>
       
       <div id="selectionStartTime">
@@ -54,7 +54,6 @@
     </form>
     <div class="result" id="result"></div>
   </div>
-  <script src="./src/roundRobinForm.js"></script>
-  <script src="./src/gameLength.js"></script>
+  <script src="./src/roundRobinForm.js" type="module"></script>
 </body>
 </html>

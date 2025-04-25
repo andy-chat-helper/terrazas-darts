@@ -1,4 +1,9 @@
 // roundRobinForm.js
+import calculateLength from "./calcTournamentLength.js";
+import convertLengthEstimate from "./convertLengthEstimate.js";
+import calcNumberGames from "./calcNumberGames.js";
+import calcEndTime from "./calcEndTime.js";
+
 document.getElementById('calculateBtn').addEventListener('click', () => {
   const players = parseInt(document.getElementById('players').value);
   const boards = parseInt(document.getElementById('boards').value);
@@ -8,23 +13,45 @@ document.getElementById('calculateBtn').addEventListener('click', () => {
   const matchFormat = document.querySelector('input[name="matchFormat"]:checked').value;
 
   // Calculate game length based on game type
-  const gameLength = gameType === '501' ? baseGameLength * (501 / 301) : baseGameLength;
+  let gameLength301;
+  let gameLength501;
 
-  // Adjust for match format
-  const totalGameLength = matchFormat === '3' ? gameLength * 2.5 : gameLength;
+  if (gameType == '301') {
+    gameLength301 = baseGameLength;
+    gameLength501 = convertLengthEstimate(baseGameLength, gameType);
+  }
+  else {
+    gameLength501 = baseGameLength;
+    gameLength301 = convertLengthEstimate(baseGameLength, gameType);
+  }
+  console.log('Game Length 301: ', gameLength301);
+  console.log('Game Length 501: ', gameLength501);
+  // Calculate number of necessary matches based on match format
+  let numberOfGames;
+  if (players < 3) {
+    alert('Not enough players for a Round Robin!')
+    return;
+  }
+  else {
+    numberOfGames = calcNumberGames(players, matchFormat)
+  }
+  console.log('Calculated number of games: ', numberOfGames);
 
-  // Calculate total time needed
-  const totalTime = (players / boards) * totalGameLength;
+  // Calculate length in mins
+  let lengthInMins;
+  if (gameType == '301') {
+    lengthInMins = calculateLength(numberOfGames, boards, gameLength301)
+  }
+  else {
+    lengthInMins = calculateLength(numberOfGames, boards, gameLength501)
+  }
+  console.log('Calculated Length: ', lengthInMins);
 
-  // Calculate end time
-  const [startHour, startMinute] = startTime.split(':').map(Number);
-  const endMinutes = startHour * 60 + startMinute + totalTime;
-  const endHour = Math.floor(endMinutes / 60) % 24;
-  const endMinute = Math.floor(endMinutes % 60);
+  // Convert to end time
+  let formattedEndTime = calcEndTime(startTime, lengthInMins)
 
-  // Format end time
-  const formattedEndTime = `${String(endHour).padStart(2, '0')}:${String(endMinute).padStart(2, '0')}`;
 
+  console.log('Calculated End Time: ', formattedEndTime);
   // Display result
-  document.getElementById('result').textContent = `Total time needed: ${Math.ceil(totalTime)} minutes. End time: ${formattedEndTime}.`;
+  document.getElementById('result').textContent = `Total time needed: ${lengthInMins} minutes. End time: ${formattedEndTime}.`;
 });
