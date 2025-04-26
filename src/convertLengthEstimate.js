@@ -5,7 +5,7 @@
  * @return estimated number of minutes (always rounded up) for the other mode
  */
 export default function convertLengthEstimate(estimate, gameType) {
-    if (gameType == '301') {
+    if (gameType === '301') {
         return Math.ceil(estimate * (501/301));
     }
     else {

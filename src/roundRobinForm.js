@@ -16,7 +16,7 @@ document.getElementById('calculateBtn').addEventListener('click', () => {
   let gameLength301;
   let gameLength501;
 
-  if (gameType == '301') {
+  if (gameType === '301') {
     gameLength301 = baseGameLength;
     gameLength501 = convertLengthEstimate(baseGameLength, gameType);
   }
@@ -39,7 +39,7 @@ document.getElementById('calculateBtn').addEventListener('click', () => {
 
   // Calculate length in mins
   let lengthInMins;
-  if (gameType == '301') {
+  if (gameType === '301') {
     lengthInMins = calculateLength(numberOfGames, boards, gameLength301)
   }
   else {
