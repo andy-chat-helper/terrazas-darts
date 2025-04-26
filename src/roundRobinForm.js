@@ -20,15 +20,15 @@ document.getElementById('calculateBtn').addEventListener('click', () => {
 
   if (estimationType === '301') {
     gameLength301 = parseInt(document.getElementById("gameLength301solo").value);
-    gameLength501 = convertLengthEstimate(gameLength301, gameType);
+    gameLength501 = convertLengthEstimate(gameLength301, estimationType);
   }
   else if (estimationType === '501') {
     gameLength501 = parseInt(document.getElementById("gameLength501solo").value);
-    gameLength301 = convertLengthEstimate(gameLength501, gameType);
+    gameLength301 = convertLengthEstimate(gameLength501, estimationType);
   }
   else {
-    gameLength301 = parseInt(document.getElementById("gameLength301both").value);
-    gameLength501 = parseInt(document.getElementById("gameLength501both").value);
+    gameLength301 = parseInt(document.getElementById("gameLength301Both").value);
+    gameLength501 = parseInt(document.getElementById("gameLength501Both").value);
   }
 
   console.log('Game Length 301: ', gameLength301);
