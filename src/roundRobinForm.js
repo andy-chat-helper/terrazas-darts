@@ -4,26 +4,33 @@ import convertLengthEstimate from "./convertLengthEstimate.js";
 import calcNumberGames from "./calcNumberGames.js";
 import calcEndTime from "./calcEndTime.js";
 
+
 document.getElementById('calculateBtn').addEventListener('click', () => {
   const players = parseInt(document.getElementById('players').value);
   const boards = parseInt(document.getElementById('boards').value);
-  const baseGameLength = parseInt(document.getElementById('gameLength').value);
-  const startTime = document.getElementById('startTime').value;
   const gameType = document.querySelector('input[name="gameType"]:checked').value;
   const matchFormat = document.querySelector('input[name="matchFormat"]:checked').value;
+  const estimationType = document.querySelector('input[name="estimationType"]:checked').value;
+  //const baseGameLength = parseInt(document.getElementById('gameLength').value);
+  const startTime = document.getElementById('startTime').value;
 
   // Calculate game length based on game type
   let gameLength301;
   let gameLength501;
 
-  if (gameType === '301') {
-    gameLength301 = baseGameLength;
-    gameLength501 = convertLengthEstimate(baseGameLength, gameType);
+  if (estimationType === '301') {
+    gameLength301 = parseInt(document.getElementById("gameLength301solo").value);
+    gameLength501 = convertLengthEstimate(gameLength301, gameType);
+  }
+  else if (estimationType === '501') {
+    gameLength501 = parseInt(document.getElementById("gameLength501solo").value);
+    gameLength301 = convertLengthEstimate(gameLength501, gameType);
   }
   else {
-    gameLength501 = baseGameLength;
-    gameLength301 = convertLengthEstimate(baseGameLength, gameType);
+    gameLength301 = parseInt(document.getElementById("gameLength301both").value);
+    gameLength501 = parseInt(document.getElementById("gameLength501both").value);
   }
+
   console.log('Game Length 301: ', gameLength301);
   console.log('Game Length 501: ', gameLength501);
   // Calculate number of necessary matches based on match format
