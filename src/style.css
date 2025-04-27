@@ -1,0 +1,149 @@
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.container {
+    padding: 20px;
+    width: 400px;
+    margin: auto;
+}
+
+input, button {
+    font-size: 16px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.wide-input {
+    width: 50px;
+}
+
+.narrow-input {
+    width: 40px;
+}
+
+.flex-container {
+    display: flex;
+}
+
+/* Header Area */
+header {
+    background-color: #004d00;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+}
+
+/* Form Details */
+#roundRobinForm {
+    flex-direction: column;
+    align-items: center;
+    border: solid 1px;
+    border-radius: 25px;
+    padding: 20px;
+}
+
+/* Player and Board Selection */
+#selectionPlayerBoard {
+    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#alignmentPlayerBoard {
+    justify-content: space-around;
+}
+
+/* Game Details */
+#selectionGameDetails {
+    flex-direction: column;
+    justify-content: center;
+}
+
+#alignmentGameDetails {
+    flex-direction: row;
+    gap: 30px;
+}
+
+#alignmentGameType, #alignmentMatchFormat {
+    flex-direction: column;
+}
+
+.gameDetailOptions {
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Length Estimation */
+#selectionLength {
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estimates for one of the two game types */
+#soloEstimationContainer {
+    width: 270px;
+    justify-content: space-between;
+}
+
+#group301, #group501 {
+    flex-direction: row;
+}
+
+.soloLengthDetails {
+    flex-direction: column;
+}
+
+/* Estimates for both game types */
+#groupBoth {
+    width: 270px;
+    display: flex;
+    align-items: center;
+}
+
+#alignmentContainerBoth {
+    width: 100%;
+}
+
+#bothLengthDetails {
+    width: 100%;
+}
+
+#bothInputAlignment {
+    justify-content: space-between;
+}
+
+.estimationLabels {
+    display: block;
+}
+
+/* Start Time Selection */
+#selectionStartTime {
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* Submit Button */
+button {
+    background-color: #cc0000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #990000;
+}
+
+/* Result */
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+}
